@@ -99,20 +99,53 @@ Laundry costs $1.50 wash, $1.25 dry, coin or card. On noise: loud until about 1a
 ```
 ```
 
-**My relevance cutoff:**
+**My relevance cutoff:** `0.6`
 
-<!-- The number you set in config.py, and how you got there.
+I kept the relevance cutoff at 0.6 because there was a clear gap between questions covered by the corpus and questions outside the corpus. My five in-corpus questions had best distances from 0.2197 to 0.4307, while the five out-of-scope questions had best distances from 0.8246 to 0.9340. A cutoff of 0.6 falls well between those groups, allowing all five in-corpus questions through while rejecting all five out-of-scope questions.
 
-     You ran five questions your corpus covers and the five in OUT_OF_SCOPE
-     that it clearly doesn't, and wrote down the best distance for each. What
-     did those two groups look like? Where was the gap? Put the actual numbers
-     here — the table below wants all ten rows.
+| Question                                                                            | In corpus? | Best distance |
+| ----------------------------------------------------------------------------------- | ---------- | ------------: |
+| Which part of Innisfree Hall is quieter?                                            | Yes        |        0.2925 |
+| How long are wait times at Kestrel Commons between 12:15 and 1:00?                  | Yes        |        0.2197 |
+| How many hours per week does CS 340 take during the last three weeks of the course? | Yes        |        0.3132 |
+| How late is the library open during the regular term?                               | Yes        |        0.4307 |
+| How far in advance should students book an adviser before registration?             | Yes        |        0.3586 |
+| What is the capital of Mongolia?                                                    | No         |        0.8246 |
+| How do I change the oil in a diesel engine?                                         | No         |        0.9340 |
+| Who won the 1994 World Cup?                                                         | No         |        0.8859 |
+| What is the recommended dosage of ibuprofen for a headache?                         | No         |        0.8442 |
+| How do I write a for loop in Rust?                                                  | No         |        0.8960 |
 
-     Milestone 4. -->
 
-| Question | In corpus? | Best distance |
-|---|---|---|
-|  |  |  |
+## Sample Answer
+
+**Question:** Which part of Innisfree Hall is quieter?
+
+**Answer:**
+
+```text
+Based on the provided documents, the short wing of Innisfree Hall is much quieter (housing_innisfree_hall_noise.txt).
+
+Sources retrieved: housing_fenwick_court_noise.txt, housing_innisfree_hall.txt, housing_innisfree_hall_noise.txt, housing_old_brewhouse_noise.txt, housing_tamsin_court_noise.txt
+```
+
+**My relevance cutoff:** `0.6`
+
+I kept the relevance cutoff at 0.6 because there was a clear gap between questions covered by the corpus and questions outside the corpus. My five in-corpus questions had best distances from 0.2197 to 0.4307, while the five out-of-scope questions had best distances from 0.8246 to 0.9340. A cutoff of 0.6 falls between those groups, allowing all five in-corpus questions through while rejecting all five out-of-scope questions.
+
+| Question                                                                            | In corpus? | Best distance |
+| ----------------------------------------------------------------------------------- | ---------- | ------------: |
+| Which part of Innisfree Hall is quieter?                                            | Yes        |        0.2925 |
+| How long are wait times at Kestrel Commons between 12:15 and 1:00?                  | Yes        |        0.2197 |
+| How many hours per week does CS 340 take during the last three weeks of the course? | Yes        |        0.3132 |
+| How late is the library open during the regular term?                               | Yes        |        0.4307 |
+| How far in advance should students book an adviser before registration?             | Yes        |        0.3586 |
+| What is the capital of Mongolia?                                                    | No         |        0.8246 |
+| How do I change the oil in a diesel engine?                                         | No         |        0.9340 |
+| Who won the 1994 World Cup?                                                         | No         |        0.8859 |
+| What is the recommended dosage of ibuprofen for a headache?                         | No         |        0.8442 |
+| How do I write a for loop in Rust?                                                  | No         |        0.8960 |
+
 
 ## How I Used AI
 
