@@ -29,56 +29,65 @@
 
 ## Chunking Strategy
 
-**Chunk size:**
-**Overlap:**
+**Chunk size:** approximately 500 characters maximum
+**Overlap:** 0 characters
 
-<!-- What about YOUR documents made you pick these numbers? Short posts and
-     long sectioned guides don't want the same chunking, and "800 seemed
-     reasonable" earns nothing. Point at something you noticed when you read
-     the documents in Milestone 1.
-
-     If you changed your mind partway through, say so and say why. That's worth
-     more than pretending you got it right first time.
-
-     Milestone 3. -->
+I used paragraph-aware chunking because the `campus_life` corpus is made up of short posts that are usually only a few paragraphs long. The starter's 800-character fixed-window chunker produced 88 chunks from 88 documents, which showed that most posts were already short enough to stand alone. I chose a target maximum of about 500 characters and split only at paragraph boundaries so sentences and complete thoughts would not be cut in half. I used no overlap because the chunks preserve complete paragraphs instead of cutting through sentences.
 
 ## Sample Chunks
 
-<!-- Five chunks, pasted as text. Label each one and name the file it came from
-     AND the function that produced it — the grader checks your code against
-     what you claim here.
+**Chunk 1** — source: `admin_add_drop_deadline.txt#0` — produced by: `chunker.py::split_documents`
 
-     `python app.py chunks -n 5` prints all three for you. Copy them straight
-     across.
+```text
+On the add/drop deadline
 
-     Milestone 3. -->
-
-**Chunk 1** — source: `` — produced by: ``
-
-```
+You can add a course through the end of the second week. Dropping is a longer window — through the end of week six — but a drop after week two shows as a W on your transcript. Nothing anywhere on the registrar's site says this plainly, and students find out from each other.
 ```
 
-**Chunk 2** — source: `` — produced by: ``
+**Chunk 2** — source: `course_biol_160_exams.txt#0` — produced by: `chunker.py::split_documents`
 
-```
-```
+```text
+BIOL 160 Cell Biology — assessment
 
-**Chunk 3** — source: `` — produced by: ``
+Four unit tests and a cumulative final. Not curved.
 
-```
-```
-
-**Chunk 4** — source: `` — produced by: ``
-
-```
+The unit tests come fast, roughly every three weeks; falling behind once is very hard to recover from.
 ```
 
-**Chunk 5** — source: `` — produced by: ``
+**Chunk 3** — source: `course_math_220_exams.txt#0` — produced by: `chunker.py::split_documents`
 
-```
+```text
+MATH 220 Linear Algebra — assessment
+
+Two midterms and a cumulative final. Curved to a b- median.
+
+The problem sets are the course; the lectures make sense afterwards rather than during.
 ```
 
-## Sample Answer
+**Chunk 4** — source: `dining_the_ridgeway_cafe.txt#0` — produced by: `chunker.py::split_documents`
+
+```text
+The Ridgeway Café
+
+Second-year here. Wait times: 10 to 15 minutes at 12:30, none after 2:00. The thing worth going for is the only place on campus with real espresso. The thing to know is that seating is tight; about 40 seats for a building of 900.
+
+Hours are 7:00am to 4:00pm weekdays only. Costs declining balance only, no meal swipes.
+```
+
+**Chunk 5** — source: `housing_morrow_house.txt#0` — produced by: `chunker.py::split_documents`
+
+```text
+Morrow House — what it's actually like
+
+Just finished a year in this building. Built 1954, partially renovated 2008. Rooms are singles and doubles, hall bathrooms.
+
+The good: cheapest housing tier by about $900 a year, and the singles are real singles.
+
+The bad: known damp problem on the ground floor; two rooms were taken offline in 2024.
+
+Laundry costs $1.50 wash, $1.25 dry, coin or card. On noise: loud until about 1am on weekends, no enforced quiet hours.
+```
+
 
 <!-- One complete question and answer, pasted as text, with the source line
      visible. Milestone 4. -->
